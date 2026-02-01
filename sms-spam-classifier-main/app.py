@@ -1,6 +1,5 @@
 import streamlit as st
 
-# ✅ Must be the first Streamlit command
 st.set_page_config(page_title="Spam Classifier", page_icon="📩", layout="centered")
 
 import pickle
@@ -9,7 +8,7 @@ import string
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
-# Download required NLTK data safely
+
 def download_nltk_data():
     try:
         nltk.data.find("tokenizers/punkt")
@@ -47,7 +46,7 @@ input_sms = st.text_area("Enter the message:")
 
 if st.button("Predict"):
     if input_sms.strip() == "":
-        st.warning("⚠️ Please enter a message.")
+        st.warning(" Please enter a message.")
     else:
         transformed_sms = transform_text(input_sms)
         vector_input = tfidf.transform([transformed_sms])
@@ -57,3 +56,4 @@ if st.button("Predict"):
             st.error("🚨 Spam")
         else:
             st.success("✅ Not Spam")
+
